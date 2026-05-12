@@ -39,7 +39,7 @@ Bu proje; **çoklu sensör entegrasyonu** ve **gerçek zamanlı çift yönlü ve
 
 ## 🗓️ Proje Yönetimi
 
-Proje, **4 aylık** süreçte beş ana aşamada tamamlanacaktır:
+Proje, **4 aylık** süreçte beş ana aşamada tamamlanmıştır:
 
 1. Literatür taraması ve sistem tasarımı
 2. 3D beşik üretimi ve mekanik montaj
@@ -47,13 +47,12 @@ Proje, **4 aylık** süreçte beş ana aşamada tamamlanacaktır:
 4. Raspberry Pi ve C# yazılım geliştirme
 5. Son sistem testleri ve raporlama
 
-Her aşama için ölçülebilir başarı kriterleri belirlenmiş olup düzenli danışman toplantılarıyla ilerleme takibi yapılacaktır.
+Her aşama için ölçülebilir başarı kriterleri belirlenmiş olup düzenli danışman toplantılarıyla ilerleme takibi yapılmıştır.
 
 ---
 
 ## 🌍 Yaygın Etki
 
-- Proje sonunda **çalışır bir prototip** üretilecek ve **faydalı model başvurusu** yapılacaktır.
 - Düşük maliyetli ve özelleştirilebilir yapısıyla bebek bakımında ebeveynlerin iş yükünü azaltarak sosyal fayda sağlayacaktır.
 - **Açık kaynak** yaklaşımı benimsenerek eğitim amaçlı kullanıma sunulabilecektir.
 - Akıllı ev sistemleri ve dijital sağlık uygulamaları alanlarında **yerli teknoloji geliştirme** çabalarına katkı sunacaktır.
