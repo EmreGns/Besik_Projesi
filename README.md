@@ -48,8 +48,9 @@ Sistem şu senaryolara göre otomatik çalışır:
 
 ### 💻 Masaüstü Kontrol Arayüzü
 Sistemin lokal ağda TCP/IP üzerinden haberleşen anlık veri takibi ve manuel kontrol ekranı:
-
-<img width="500" alt="C# Masaüstü Arayüzü" src="https://github.com/user-attachments/assets/ab3bee90-5f1e-4555-9c6f-9a4777d25368" />
+<p align="center">
+  <img width="500" alt="C# Masaüstü Arayüzü" src="https://github.com/user-attachments/assets/ab3bee90-5f1e-4555-9c6f-9a4777d25368" />
+</p>
 
 ---
 
