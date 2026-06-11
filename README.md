@@ -1,74 +1,63 @@
 # 🍼 IoT Tabanlı Akıllı Beşik Sistemi
 
-Bu proje, bebek bakımında ebeveynlerin iş yükünü azaltmayı ve bebek konforunu otomatik olarak sağlamayı amaçlayan **IoT tabanlı akıllı bir beşik sistemi** geliştirmeyi hedeflemektedir.
+[![TÜBİTAK 2209-A](https://img.shields.io/badge/T%C3%9CB%C4%B0TAK-2209--A%20%C4%B0ndikat%C3%B6r%C3%BC-blue)](https://www.tubitak.gov.tr/)
+> **Bu proje, TÜBİTAK 2209-A Üniversite Öğrencileri Araştırma Projeleri Destekleme Programı kapsamında başvurusu gerçekleştirilmiş bir çalışmadır.**
+
+Bu proje; bebek bakımında ebeveynlerin iş yükünü azaltmayı, bebek konforunu ve güvenliğini otomasyon sistemleriyle optimize etmeyi amaçlayan **IoT tabanlı akıllı bir beşik sistemidir**.
 
 ---
 
-## 📌 Proje Hakkında
+## 📌 Proje Hakkında ve Mantığı
 
-Günümüzde bebek bakımı, ebeveynler için fiziksel ve zihinsel açıdan oldukça yorucu bir süreçtir. Mevcut ticari akıllı beşik sistemlerinin yüksek maliyetli olması ve sınırlı özelleştirme imkânı sunması, literatürdeki önemli eksikliklerden biridir.
+Mevcut ticari akıllı beşik sistemlerinin yüksek maliyetli olması ve sınırlı özelleştirme imkânı sunması bu projenin çıkış noktasıdır. Sistem, çoklu sensör entegrasyonu sayesinde bebeğin durumunu anlık takip eder ve **hibrit kontrol arayüzleri (Masaüstü & Web)** üzerinden ebeveynlere çift yönlü gerçek zamanlı erişim sunar.
 
-Bu proje; **çoklu sensör entegrasyonu**, **gerçek zamanlı çift yönlü veri iletişimi** ve **hibrit kontrol arayüzleri (Masaüstü & Web)** yetenekleriyle literatürdeki benzer çalışmalardan ayrışmaktadır.
+Sistem şu senaryolara göre otomatik çalışır:
+- 🔊 **Ağlama ve Hareket Algılama:** Ses ve PIR sensörleri bebekte bir huzursuzluk (ağlama veya aşırı hareket) algıladığı an servo motor tabanlı sallama mekanizması otomatik devreye girer.
+- 🌡️ **Sıcaklık ve Işık Regülasyonu:** Ortam sıcaklığı veya nemi konfor sınırından çıktığında havalandırma fanı; ortam karardığında ise bebeği ürkütmeyecek kırmızı gece LED'i otomatik tetiklenir.
+- 📱 **Anlık Bildirim & Canlı Yayın:** Kritik durumlarda Raspberry Pi kamerası otomatik video kaydına başlar ve **Telegram API** üzerinden ebeveynin telefonuna anlık push bildirimi gönderilir.
 
 ---
 
 ## ⚙️ Sistem Mimarisi
 
-### Donanım
+### Donanım Bileşenleri
 
-| Bileşen | Açıklama |
+| Bileşen | Açıklama / Görevi |
 |--------|----------|
-| Beşik Gövdesi | 3D baskı teknolojisiyle üretilmiştir |
-| Sallama Mekanizması | Servo motor tabanlı |
-| PIR Sensörü | Hareket algılama |
-| Ses Sensörü | Ağlama tespiti |
-| LDR Sensörü | Işık seviyesi ölçümü |
-| Sıcaklık & Nem Sensörü | Ortam konforu izleme |
-| Kırmızı LED | Gece aydınlatması |
-| Havalandırma Fanı | Sıcaklık regülasyonu |
-| Raspberry Pi 4 | Ana işlem birimi (SBC) |
+| **Raspberry Pi 4** | Ana işlem birimi (SBC), tüm sensör ve motor lojiğini yönetir. |
+| **Beşik Gövdesi** | Tamamen 3D baskı teknolojisiyle modüler üretilmiştir. |
+| **Sallama Mekanizması** | Servo motor tabanlı mekanik tasarım. |
+| **Sensör Grubu** | PIR (Hareket), Ses (Ağlama), LDR (Işık), DHT (Sıcaklık & Nem). |
+| **Aktüatörler** | Havalandırma Fanı ve Gece Aydınlatma LED'i. |
 
 ### Yazılım & Hibrit İletişim Altyapısı
 
-- **Raspberry Pi 4:** Sensör verilerini anlık olarak işler; bebek ağladığında veya hareket ettiğinde beşik otomatik olarak sallanır. Kritik durumlarda **Raspberry Pi kamerası** ile otomatik video kaydı başlatılır.
-- **C# Masaüstü Arayüzü:** Raspberry Pi ile **TCP/IP socket programlama** kullanılarak çift yönlü, düşük gecikmeli ve gerçek zamanlı veri iletişimi sağlar.
-- **Web Arayüzü Entegrasyonu:** Sistemin web tabanlı izleme ve kontrol süreçleri için geliştirilen modern web arayüzü sayesinde, ebeveynler beşik durumunu herhangi bir tarayıcı üzerinden tamamen uzaktan ve platform bağımsız olarak izleyip kontrol edebilirler.
-- **Telegram API:** Ağlama veya hareket algılandığında ebeveynlere anlık olarak görsel/metinsel push bildirimleri gönderilir.
-
----
-
-## 🗓️ Proje Yönetimi
-
-Proje, **4 aylık** süreçte beş ana aşamada tamamlanmıştır:
-
-1. Literatür taraması ve sistem tasarımı
-2. 3D beşik üretimi ve mekanik montaj
-3. Donanım entegrasyonu ve testleri
-4. Raspberry Pi, C# ve Web yazılımlarının geliştirilmesi
-5. Son sistem entegrasyon testleri ve raporlama
-
-Her aşama için ölçülebilir başarı kriterleri belirlenmiş olup düzenli danışman toplantılarıyla ilerleme takibi yapılmıştır.
+- **C# Masaüstü Arayüzü:** Raspberry Pi ile **TCP/IP socket programlama** altyapısını kullanır. Çok düşük gecikmeli, çift yönlü ve gerçek zamanlı lokal veri iletişimi ve manuel kontrol sağlar.
+- **Web Yönetim Paneli:** Sistemin web mimarisine taşınmasıyla geliştirilen modern dashboard sayesinde, ebeveynler evin dışındayken de beşiğin durumunu herhangi bir internet tarayıcısı üzerinden platform bağımsız olarak izleyebilir ve kontrol edebilirler.
 
 ---
 
 ## 🌍 Yaygın Etki
 
-- Düşük maliyetli ve özelleştirilebilir yapısıyla bebek bakımında ebeveynlerin iş yükünü azaltarak sosyal fayda sağlayacaktır.
-- **Açık kaynak** yaklaşımı benimsenerek eğitim amaçlı kullanıma sunulabilecektir.
-- Akıllı ev sistemleri ve dijital sağlık uygulamaları alanlarında **yerli teknoloji geliştirme** çabalarına katkı sunacaktır.
+- **Düşük Maliyet:** Ticari muadillerine kıyasla yüksek oranda ekonomik ve geliştirilebilir mimari.
+- **Yerli ve Açık Kaynak:** Akıllı ev ve dijital sağlık teknolojilerinde yerli kod geliştirme vizyonu.
 
 ---
 
 ## 📸 Proje Görselleri
 
-### 🛠️ Donanım ve Prototip
-Geliştirilen 3D mekanik gövde ve sensör optimizasyonları:
-<img width="2048" height="1536" alt="final" src="https://github.com/user-attachments/assets/75f30468-fa15-4152-926a-053453b6262c" />
+### 💻 Arayüz Tasarımları (Masaüstü & Web)
+Sistemin hem lokal masaüstü (C#) hem de uzaktan izleme (Web Dashboard) ekranları:
 
-### 💻 C# Masaüstü Kontrol Paneli
-TCP/IP üzerinden anlık veri takibi ve manuel kontrol arayüzü:
-<img width="814" height="598" alt="c#" src="https://github.com/user-attachments/assets/ab3bee90-5f1e-4555-9c6f-9a4777d25368" />
+| C# Masaüstü Kontrol Paneli | Web Yönetim Paneli |
+|----------------------------|--------------------|
+| <img width="400" alt="C# Masaüstü Arayüzü" src="https://github.com/user-attachments/assets/ab3bee90-5f1e-4555-9c6f-9a4777d25368" /> | <img width="400" alt="Web Dashboard" src="https://github.com/user-attachments/assets/fdf5e062-a5e0-478a-b1f3-5706fc464454" /> |
 
-### 🌐 Web Yönetim Paneli
-Uzaktan erişim ve platform bağımsız izleme arayüzü:
-<img width="1409" height="684" alt="Web Dashboard" src="https://github.com/user-attachments/assets/fdf5e062-a5e0-478a-b1f3-5706fc464454" />
+---
+
+### 🛠️ Donanım Kurulumu ve Fiziksel Prototip
+Geliştirilen 3D mekanik gövde, Raspberry Pi entegrasyonu ve sensör optimizasyonları:
+
+<p align="center">
+  <img width="820" alt="3D Beşik Donanım Prototipi" src="https://github.com/user-attachments/assets/75f30468-fa15-4152-926a-053453b6262c" />
+</p>
