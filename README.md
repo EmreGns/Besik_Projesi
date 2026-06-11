@@ -46,12 +46,19 @@ Sistem şu senaryolara göre otomatik çalışır:
 
 ## 📸 Proje Görselleri
 
-### 💻 Arayüz Tasarımları (Masaüstü & Web)
-Sistemin hem lokal masaüstü (C#) hem de uzaktan izleme (Web Dashboard) ekranları:
+### 💻 Masaüstü Kontrol Arayüzü
+Sistemin lokal ağda TCP/IP üzerinden haberleşen anlık veri takibi ve manuel kontrol ekranı:
 
-| C# Masaüstü Kontrol Paneli | Web Yönetim Paneli |
-|----------------------------|--------------------|
-| <img width="400" alt="C# Masaüstü Arayüzü" src="https://github.com/user-attachments/assets/ab3bee90-5f1e-4555-9c6f-9a4777d25368" /> | <img width="400" alt="Web Dashboard" src="https://github.com/user-attachments/assets/fdf5e062-a5e0-478a-b1f3-5706fc464454" /> |
+<img width="500" alt="C# Masaüstü Arayüzü" src="https://github.com/user-attachments/assets/ab3bee90-5f1e-4555-9c6f-9a4777d25368" />
+
+---
+
+### 🌐 Web Yönetim Paneli
+Dünyanın herhangi bir yerinden tarayıcı vasıtasıyla beşiğe erişim sağlayan, platform bağımsız geniş ekran izleme ve kontrol dashboard'u:
+
+<p align="center">
+  <img width="850" alt="Web Dashboard" src="https://github.com/user-attachments/assets/fdf5e062-a5e0-478a-b1f3-5706fc464454" />
+</p>
 
 ---
 
@@ -59,5 +66,5 @@ Sistemin hem lokal masaüstü (C#) hem de uzaktan izleme (Web Dashboard) ekranla
 Geliştirilen 3D mekanik gövde, Raspberry Pi entegrasyonu ve sensör optimizasyonları:
 
 <p align="center">
-  <img width="820" alt="3D Beşik Donanım Prototipi" src="https://github.com/user-attachments/assets/75f30468-fa15-4152-926a-053453b6262c" />
+  <img width="850" alt="3D Beşik Donanım Prototipi" src="https://github.com/user-attachments/assets/75f30468-fa15-4152-926a-053453b6262c" />
 </p>
